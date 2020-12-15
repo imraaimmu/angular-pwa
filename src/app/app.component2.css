@@ -1,0 +1,101 @@
+/* Created by vijay patidar :D */
+
+@import url('https://fonts.googleapis.com/css?family=Josefin+Sans');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Gloria+Hallelujah');
+
+body {
+    padding:0;
+    margin:0;
+    background:#231f1f;
+}
+
+.card{
+    max-width:400px;
+    width:100%;
+    height:200px;
+    background:#848384; /*#de9ae0*/
+    position:absolute;
+    margin:auto;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+
+}
+
+
+.photo{
+    display:block;
+    background:#fff;
+    width:100px;
+    height:100px;
+    border:3px solid black;
+    border-radius:50%;
+    position:absolute;
+    margin:auto;
+    margin-right:25px;
+    right:0;
+    top:0;
+    bottom:0;
+    
+    
+}
+
+.info{
+    width:250px;
+    height:100%;
+    margin-left:10px;
+    margin-top:20px;
+    padding:0;
+    
+}
+
+.info h1{
+    font-family: 'Amatic SC', cursive;
+    color:#fff;
+    font-size:50px;
+    font-weight:bold;
+    margin:0;
+    padding:0;
+    text-align:center;
+}
+
+.info h3{
+    font-family: 'Gloria Hallelujah', cursive;
+    color:#fff;
+    font-size:20px;
+    font-weight:bold;
+    margin:0;
+    padding:0;
+    text-align:left;
+}
+.info p, text{
+    color:#fff;
+    font-family: 'Gloria Hallelujah', cursive;
+    text-align:left;
+    padding-left:30px;
+    margin:0;
+}
+
+.create{
+    width:50px;
+    height:10px;
+    margin:auto;
+}
+
+button{
+    text-decoration:none;
+    padding:10px 5px;
+    background:lightgreen;
+    color:white;
+    font-weight:bold;
+    border:3px solid;
+    border-radius:5px;
+    animation:a 5s infinite;
+}
+
+@keyframes a{
+    25%{border-color:black;}
+    50%{border-color:gold;}
+    75%{border-color:lightblue;}
+}

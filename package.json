@@ -7,7 +7,8 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "prod": "ng build --prod"
   },
   "private": true,
   "dependencies": {
@@ -19,8 +20,19 @@
     "@angular/platform-browser": "~11.0.1",
     "@angular/platform-browser-dynamic": "~11.0.1",
     "@angular/router": "~11.0.1",
+    "@angular/service-worker": "~11.0.1",
+    "@uppy/webcam": "^1.8.1",
+    "dom-to-image": "^2.6.0",
+    "html2canvas": "^1.0.0-rc.7",
+    "html2canvas-dpi": "^0.4.8",
+    "html2pdf": "0.0.11",
+    "jspdf": "^2.2.0",
+    "jspdf-html2canvas": "^1.3.2",
+    "ngx-mqtt": "^8.0.1",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
+    "uppy-angular": "^0.1.4",
+    "webcam-easy": "^1.0.5",
     "zone.js": "~0.10.2"
   },
   "devDependencies": {
