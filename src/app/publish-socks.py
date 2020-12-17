@@ -15,7 +15,7 @@ broker="localhost"
 # port= 8080
 port=1883
 # port= 9001
-sub_topic="house/#"
+sub_topic="my/topic"
 def on_subscribe(client, userdata, mid, granted_qos):   #create function for callback
    print("subscribed with qos",granted_qos, "\n")
    pass
@@ -26,7 +26,7 @@ def on_publish(client,userdata,mid):   #create function for callback
    pass
 def on_disconnect(client, userdata, rc):
    print("client disconnected ok") 
-client= paho.Client("client-socks")       #create client object
+client= paho.Client("client-socks",transport="websockets")       #create client object
 #client= paho.Client("control1")
 client.on_subscribe = on_subscribe       #assign function to callback
 client.on_publish = on_publish        #assign function to callback
@@ -38,7 +38,7 @@ client.loop_start()
 print("subscribing to ",sub_topic)
 client.subscribe(sub_topic)
 time.sleep(3)
-client.publish("my/topic","on")    #publish
+client.publish("my/topic","Hey guys, I'm your publisher. I hope you recieve this message.")    #publish
 time.sleep(30)
 
 # client.disconnect()

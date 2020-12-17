@@ -3,7 +3,7 @@ import { SwUpdate } from '@angular/service-worker';
 import { jsPDF } from "jspdf";
 import html2canvas from "html2canvas";
 import domtoimage from 'dom-to-image';
-import EventStreamComponent from "./event-stream/event-stream.component"
+import {EventStreamComponent} from "./event-stream/event-stream.component"
 
 
 
