@@ -1,45 +1,48 @@
-#Note demo scripts have limited or no error detection and use
-#timers to wait for events. They assume everything works ok
-#www.steves-internet-guide.com
-#contact steve@steves-internet-guide.com
-##Free to use for any purpose
-##If you like and use this code you can
-##buy me a drink here https://www.paypal.me/StepenCope
-##Grateful for any feedback
-#uses websockets publish-subscribe and receive message
 import paho.mqtt.client as paho
 import time
+# from smbus2 import SMBus //uncomment it
+# from mlx90614 import MLX90614 //uncomment it
+import sched,time
+import random
+
+s = sched.scheduler(time.time, time.sleep);
 broker="localhost"
-# broker="iot.eclipse.org"
-# broker="192.168.0.6"
-# port= 8080
 port=1883
-# port= 9001
-sub_topic="my/topic"
+client= paho.Client("client-socks",transport="websockets")       #create client object
 def on_subscribe(client, userdata, mid, granted_qos):   #create function for callback
    print("subscribed with qos",granted_qos, "\n")
    pass
 def on_message(client, userdata, message):
     print("message received  "  ,str(message.payload.decode("utf-8")))
 def on_publish(client,userdata,mid):   #create function for callback
-   print("data published mid=",mid, "\n")
+   print("data published",mid, "\n")
    pass
 def on_disconnect(client, userdata, rc):
-   print("client disconnected ok") 
-client= paho.Client("client-socks",transport="websockets")       #create client object
-#client= paho.Client("control1")
-client.on_subscribe = on_subscribe       #assign function to callback
-client.on_publish = on_publish        #assign function to callback
-client.on_message = on_message        #assign function to callback
-client.on_disconnect = on_disconnect
-print("connecting to broker ",broker,"on port ",port)
-client.connect(broker,port)           #establish connection
-client.loop_start()
-print("subscribing to ",sub_topic)
-client.subscribe(sub_topic)
-time.sleep(3)
-client.publish("my/topic","Hey guys, I'm your publisher. I hope you recieve this message.")    #publish
-time.sleep(30)
+   print("client disconnected ok")
+def get_from_device():
+   # bus = SMBus(1)
+   # sensor = MLX90614(bus, address=0x5A)
+   # print "Ambient Temperature :", sensor.get_ambient()
+   # print "Object Temperature :", sensor.get_object_1()
+   # bus.close() 
+   return random.randint(31,39);
+def connectToBroker():
+   client.on_subscribe = on_subscribe       #assign function to callback
+   client.on_publish = on_publish        #assign function to callback
+   client.on_message = on_message        #assign function to callback
+   client.on_disconnect = on_disconnect
+   print("connecting to broker ",broker,"on port ",port)
+   client.connect(broker,port)           #establish connection
+def publish_data():
+   # client.loop_start()
+   # print("subscribing to ","my/topic")
+   # client.subscribe("my/topic") // subscribe
+   client.publish("my/topic","This guy's temp is : " + str(get_from_device()))    #publish
+   s.enter(5, 1, publish_data);
+   s.run();
+
+connectToBroker();
+publish_data();
 
 # client.disconnect()
 
