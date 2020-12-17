@@ -37,7 +37,7 @@ def publish_data():
    # client.loop_start()
    # print("subscribing to ","my/topic")
    # client.subscribe("my/topic") // subscribe
-   client.publish("my/topic","This guy's temp is : " + str(get_from_device()))    #publish
+   client.publish("my/topic",str(get_from_device()))    #publish
    s.enter(5, 1, publish_data);
    s.run();
 

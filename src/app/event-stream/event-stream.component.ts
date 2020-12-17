@@ -9,7 +9,7 @@ import { EventMqttService } from '../services/event.mqtt.service';
     styleUrls: ['./event-stream.component.scss'],
 })
 export class EventStreamComponent implements OnInit {
-    events: any[];
+    events = [] ;
     private deviceId: string;
     subscription: Subscription;
 
@@ -32,8 +32,7 @@ export class EventStreamComponent implements OnInit {
         this.subscription = this.eventMqtt.topic('my/topic')
             .subscribe((data: IMqttMessage) => {
               console.log('received msg from publisher : '+ data.payload.toString());
-              // let item = JSON.parse(data.payload.toString());
-							// 	this.events.push(item);
+							this.events.push(data.payload.toString());
             });
     }
 }
