@@ -4,11 +4,16 @@
 
 export const environment = {
   production: false,
-  mqtt: {
-		server: 'localhost',
-		protocol: "ws",
-		port: 1883,
-	}
+//   mqtt: {
+// 		server: 'localhost',
+// 		protocol: "ws",
+// 		port: 1883,
+// 	}
+mqtt: {
+	server: 'broker.emqx.io',
+	protocol: "ws",
+	port: 8083,
+}
 };
 
 /*
