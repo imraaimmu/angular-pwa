@@ -13,6 +13,9 @@ export class EventStreamComponent implements OnInit {
     private deviceId: string;
     subscription: Subscription;
 
+    server : any;
+    port : any;
+    protocol : any;
     constructor(
         private readonly eventMqtt: EventMqttService,
     ) {
@@ -34,5 +37,10 @@ export class EventStreamComponent implements OnInit {
               console.log('received msg from publisher : '+ data.payload.toString());
 							this.events.push(data.payload.toString());
             });
+    }
+    connect(){
+        // this.router.navigateByUrl('/RefreshComponent', { skipLocationChange: true }).then(() => {
+        //     this.router.navigate(['Your actualComponent']);
+        // }); 
     }
 }

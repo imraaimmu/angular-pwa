@@ -6,8 +6,8 @@ import sched,time
 import random
 
 s = sched.scheduler(time.time, time.sleep);
-broker="localhost"
-port=1883
+broker="test.mosquitto.org"
+port=8081
 client= paho.Client("client-socks",transport="websockets")       #create client object
 def on_subscribe(client, userdata, mid, granted_qos):   #create function for callback
    print("subscribed with qos",granted_qos, "\n")

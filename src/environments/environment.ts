@@ -9,10 +9,15 @@ export const environment = {
 // 		protocol: "ws",
 // 		port: 1883,
 // 	}
+// mqtt: {
+// 	server: 'broker.emqx.io',
+// 	protocol: "ws",
+// 	port: 8083,
+// }
 mqtt: {
-	server: 'broker.emqx.io',
+	server: 'test.mosquitto.org',
 	protocol: "ws",
-	port: 8083,
+	port: 8081,
 }
 };
 
